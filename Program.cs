@@ -8,6 +8,7 @@
 
 			string[] stringArray = GetStringArray(length);
 			string[] shortStringArray = CreateShortItemArrayFrom(stringArray);
+			Console.WriteLine("\nМассив в котором длинна любой строки не превышает 3, созданный на основе введенных вами данных:");
 			Console.WriteLine(ArrayStringToText(shortStringArray));
 		}
 
@@ -39,7 +40,7 @@
 		{
 			string[] stringArray = new string[startArray.Length];
 			int index = 0;
-			for (int i = 0; i < startArray.Lengthength; i++)
+			for (int i = 0; i < startArray.Length; i++)
 			{
 				if (startArray[i].Length <= 3)
 				{
@@ -53,10 +54,11 @@
 		static string ArrayStringToText(string[] stringArray)
 		{
 			string text = string.Empty;
-			for (int i = 0; i < stringArray.Length; i++)
+			for (int i = 0; i < stringArray.Length - 1; i++)
 			{
-				text = '"' + stringArray[i] + '"' + ",";
+				text += '"' + stringArray[i] + '"' + ", ";
 			}
+			text += '"' + stringArray[stringArray.GetUpperBound(0)] + '"';
 			return text;
 		}
 	}
