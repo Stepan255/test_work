@@ -4,12 +4,20 @@
 	{
 		static void Main(string[] args)
 		{
+			Console.Clear();
+
 			ushort length = GetLengthFromConsole();
 
 			string[] stringArray = GetStringArray(length);
 			string[] shortStringArray = CreateShortItemArrayFrom(stringArray);
 			Console.WriteLine("\nМассив в котором длинна любой строки не превышает 3, созданный на основе введенных вами данных:");
-			Console.WriteLine(ArrayStringToText(shortStringArray));
+			if (shortStringArray.Length > 0) Console.WriteLine(ArrayStringToText(shortStringArray));
+			else 
+			{
+				Console.ForegroundColor = ConsoleColor.Red;
+				Console.WriteLine("В заданом массиве нет таих строк");
+				Console.ResetColor();
+			}
 		}
 
 		static ushort GetLengthFromConsole()
@@ -58,7 +66,7 @@
 			{
 				text += '"' + stringArray[i] + '"' + ", ";
 			}
-			text += '"' + stringArray[stringArray.GetUpperBound(0)] + '"';
+			if (stringArray.Length > 0) text += '"' + stringArray[stringArray.GetUpperBound(0)] + '"';
 			return text;
 		}
 	}
